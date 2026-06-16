@@ -1,45 +1,35 @@
-```javascript id="x8p4mv"
+```javascript id="x2m7ql"
+let timers = new Map();
+
 function mulaiTimer(button){
 
-  // Cari card staff
   const card = button.parentElement;
 
-  // Ambil status & timer
-  const status = card.querySelector(".status");
   const timerDisplay = card.querySelector(".timer");
+  const status = card.querySelector(".status");
 
-  // Cegah spam klik
-  const semuaButton = card.querySelectorAll("button");
+  // Cegah double timer
+  if(timers.has(card)){
+    return;
+  }
 
-  semuaButton.forEach(btn => {
-    btn.disabled = true;
-    btn.style.opacity = "0.6";
-  });
+  let waktu = 16 * 60;
 
-  // Ubah status
   status.innerHTML = "Status : Sedang Izin";
 
-  // Waktu 15 menit
-  let waktu = 15 * 60;
-
-  // Jalankan countdown
   const interval = setInterval(function(){
 
     let menit = Math.floor(waktu / 60);
     let detik = waktu % 60;
 
-    // Tambah angka 0
     if(detik < 10){
       detik = "0" + detik;
     }
 
-    // Tampilkan timer
     timerDisplay.innerHTML = menit + ":" + detik;
 
-    // Kurangi waktu
     waktu--;
 
-    // Jika selesai
     if(waktu < 0){
 
       clearInterval(interval);
@@ -48,19 +38,66 @@ function mulaiTimer(button){
 
       status.innerHTML = "Status : Kembali";
 
-      // Aktifkan tombol lagi
-      semuaButton.forEach(btn => {
-        btn.disabled = false;
-        btn.style.opacity = "1";
-      });
+      timers.delete(card);
 
     }
 
   },1000);
 
+  timers.set(card, interval);
+
 }
 
-/* CONSOLE */
+function stopTimer(button){
+
+  const card = button.parentElement;
+
+  const timerDisplay = card.querySelector(".timer");
+  const status = card.querySelector(".status");
+
+  if(timers.has(card)){
+
+    clearInterval(timers.get(card));
+
+    timers.delete(card);
+
+  }
+
+  timerDisplay.innerHTML = "16:00";
+
+  status.innerHTML = "Status : Standby";
+
+}
+
+function filterNama(){
+
+  const input = document
+  .getElementById("searchInput")
+  .value
+  .toLowerCase();
+
+  const cards = document.querySelectorAll(".card");
+
+  cards.forEach(card => {
+
+    const nama = card
+    .querySelector(".nama")
+    .innerText
+    .toLowerCase();
+
+    if(nama.includes(input)){
+
+      card.style.display = "block";
+
+    }else{
+
+      card.style.display = "none";
+
+    }
+
+  });
+
+}
 
 console.log("Dashboard Izin Aktif");
 ```

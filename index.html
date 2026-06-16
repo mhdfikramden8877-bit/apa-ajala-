@@ -1,95 +1,13 @@
-```html
+```html id="d7m2qx"
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard Izin ZIATOGEL</title>
+  <title>Dashboard Izin ZIATOGEL</title>
 
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:Arial;
-  background:#0f172a;
-  color:white;
-  padding:20px;
-}
-
-h1{
-  text-align:center;
-  margin-bottom:10px;
-  color:cyan;
-}
-
-.subtitle{
-  text-align:center;
-  margin-bottom:30px;
-  color:#cbd5e1;
-}
-
-.container{
-  max-width:500px;
-  margin:auto;
-}
-
-.card{
-  background:#111827;
-  border-radius:20px;
-  padding:20px;
-  margin-bottom:20px;
-  box-shadow:0 0 20px rgba(0,255,255,0.2);
-}
-
-.nama{
-  font-size:22px;
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-.status{
-  margin-top:10px;
-  color:#22c55e;
-}
-
-.timer{
-  margin-top:10px;
-  font-size:20px;
-  color:#facc15;
-}
-
-button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:15px;
-}
-
-.toilet{
-  background:#06b6d4;
-  color:white;
-}
-
-.rokok{
-  background:#f59e0b;
-  color:white;
-}
-
-button:hover{
-  opacity:0.9;
-}
-
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -100,99 +18,92 @@ button:hover{
 Sistem Pengajuan Izin Staff
 </p>
 
-<div class="container">
+<div class="search-box">
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="Cari nama staff..."
+    onkeyup="filterNama()"
+  >
+</div>
+
+<div class="container" id="staffContainer">
+
+  <!-- STAFF -->
 
   <div class="card">
+    <div class="nama">KENDRICK TANRIO - X1318081</div>
+    <div class="status">Status : Standby</div>
+    <div class="timer">16:00</div>
 
-    <div class="nama">
-      JOKO WALUYO
-    </div>
-
-    <button class="toilet" onclick="mulaiTimer(this)">
-      🚻 IZIN TOILET
+    <button class="start-btn" onclick="mulaiTimer(this)">
+      ▶ MULAI
     </button>
 
-    <button class="rokok" onclick="mulaiTimer(this)">
-      🚬 IZIN MEROKOK
+    <button class="stop-btn" onclick="stopTimer(this)">
+      ■ STOP
     </button>
-
-    <div class="status">
-      Status : Standby
-    </div>
-
-    <div class="timer">
-      15:00
-    </div>
-
   </div>
 
   <div class="card">
+    <div class="nama">ZIDAN FEBRIANSYAH - C9256551</div>
+    <div class="status">Status : Standby</div>
+    <div class="timer">16:00</div>
 
-    <div class="nama">
-      BUDI SANTOSO
-    </div>
-
-    <button class="toilet" onclick="mulaiTimer(this)">
-      🚻 IZIN TOILET
+    <button class="start-btn" onclick="mulaiTimer(this)">
+      ▶ MULAI
     </button>
 
-    <button class="rokok" onclick="mulaiTimer(this)">
-      🚬 IZIN MEROKOK
+    <button class="stop-btn" onclick="stopTimer(this)">
+      ■ STOP
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="nama">FAHMI RIZKI SABTOMI - E0311971</div>
+    <div class="status">Status : Standby</div>
+    <div class="timer">16:00</div>
+
+    <button class="start-btn" onclick="mulaiTimer(this)">
+      ▶ MULAI
     </button>
 
-    <div class="status">
-      Status : Standby
-    </div>
+    <button class="stop-btn" onclick="stopTimer(this)">
+      ■ STOP
+    </button>
+  </div>
 
-    <div class="timer">
-      15:00
-    </div>
+  <div class="card">
+    <div class="nama">MUHAMMAD VALHANS LUBIS - C9039911</div>
+    <div class="status">Status : Standby</div>
+    <div class="timer">16:00</div>
 
+    <button class="start-btn" onclick="mulaiTimer(this)">
+      ▶ MULAI
+    </button>
+
+    <button class="stop-btn" onclick="stopTimer(this)">
+      ■ STOP
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="nama">MUHAMMAD FIKRAM DENALDO - X8318440</div>
+    <div class="status">Status : Standby</div>
+    <div class="timer">16:00</div>
+
+    <button class="start-btn" onclick="mulaiTimer(this)">
+      ▶ MULAI
+    </button>
+
+    <button class="stop-btn" onclick="stopTimer(this)">
+      ■ STOP
+    </button>
   </div>
 
 </div>
 
-<script>
-
-function mulaiTimer(button){
-
-  const card = button.parentElement;
-
-  const status = card.querySelector(".status");
-  const timerDisplay = card.querySelector(".timer");
-
-  status.innerHTML = "Status : Sedang Izin";
-
-  let waktu = 15 * 60;
-
-  const interval = setInterval(function(){
-
-    let menit = Math.floor(waktu / 60);
-    let detik = waktu % 60;
-
-    if(detik < 10){
-      detik = "0" + detik;
-    }
-
-    timerDisplay.innerHTML = menit + ":" + detik;
-
-    waktu--;
-
-    if(waktu < 0){
-
-      clearInterval(interval);
-
-      timerDisplay.innerHTML = "Selesai";
-
-      status.innerHTML = "Status : Kembali";
-
-    }
-
-  },1000);
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
