@@ -1,3 +1,4 @@
+```css id="n4v8qy"
 *{
   margin:0;
   padding:0;
@@ -5,82 +6,209 @@
 }
 
 body{
-  font-family:Arial;
-  background:#0f172a;
+  font-family:Arial, sans-serif;
+  background:#050816;
   color:white;
-}
-
-.container{
-  width:100%;
   min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
   padding:20px;
+  overflow-x:hidden;
 }
 
-.dashboard{
-  width:100%;
-  max-width:400px;
+/* BACKGROUND NEON */
+
+body::before{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:#00ffff;
+  filter:blur(180px);
+  opacity:0.15;
+  top:-150px;
+  left:-150px;
+  z-index:-1;
+
+  animation:glowMove 8s infinite alternate;
 }
+
+@keyframes glowMove{
+
+  from{
+    transform:translate(0,0);
+  }
+
+  to{
+    transform:translate(200px,150px);
+  }
+
+}
+
+/* TITLE */
 
 h1{
   text-align:center;
-  font-size:35px;
+  font-size:38px;
   color:#00ffff;
+
+  text-shadow:
+  0 0 10px #00ffff,
+  0 0 20px #00ffff,
+  0 0 40px #00ffff;
+
   margin-bottom:10px;
 }
 
 .subtitle{
   text-align:center;
-  margin-bottom:25px;
   color:#cbd5e1;
+  margin-bottom:30px;
+  font-size:16px;
 }
+
+/* CONTAINER */
+
+.container{
+  max-width:500px;
+  margin:auto;
+}
+
+/* CARD STAFF */
 
 .card{
-  background:#111827;
+  background:rgba(15,23,42,0.8);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(15px);
+
+  border-radius:25px;
+
   padding:25px;
-  border-radius:20px;
-  margin-bottom:20px;
-  text-align:center;
-  box-shadow:0 0 20px #00ffff33;
-}
 
-.icon{
-  font-size:55px;
-  margin-bottom:15px;
-}
+  margin-bottom:25px;
 
-.card h2{
-  margin-bottom:10px;
-}
+  box-shadow:
+  0 0 25px rgba(0,255,255,0.15);
 
-.card p{
-  color:#cbd5e1;
-  margin-bottom:20px;
-}
-
-.btn{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:12px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
   transition:0.3s;
 }
 
-.toilet{
-  background:#06b6d4;
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* NAMA STAFF */
+
+.nama{
+  font-size:24px;
+  font-weight:bold;
+  text-align:center;
+  margin-bottom:20px;
+
   color:white;
 }
+
+/* BUTTON */
+
+button{
+  width:100%;
+
+  padding:15px;
+
+  border:none;
+
+  border-radius:15px;
+
+  font-size:16px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  margin-top:15px;
+
+  transition:0.3s;
+}
+
+/* BUTTON TOILET */
+
+.toilet{
+  background:#00ffff;
+  color:black;
+
+  box-shadow:
+  0 0 15px #00ffff,
+  0 0 30px #00ffff;
+}
+
+/* BUTTON ROKOK */
 
 .rokok{
-  background:#f59e0b;
+  background:#ff00ff;
   color:white;
+
+  box-shadow:
+  0 0 15px #ff00ff,
+  0 0 30px #ff00ff;
 }
 
-.btn:hover{
+/* BUTTON HOVER */
+
+button:hover{
   transform:scale(1.05);
 }
+
+/* STATUS */
+
+.status{
+  margin-top:18px;
+  text-align:center;
+  font-size:16px;
+  font-weight:bold;
+  color:#22c55e;
+}
+
+/* TIMER */
+
+.timer{
+  margin-top:12px;
+
+  text-align:center;
+
+  font-size:30px;
+
+  font-weight:bold;
+
+  color:#facc15;
+
+  text-shadow:
+  0 0 10px #facc15,
+  0 0 20px #facc15;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  body{
+    padding:15px;
+  }
+
+  h1{
+    font-size:30px;
+  }
+
+  .card{
+    padding:20px;
+  }
+
+  .nama{
+    font-size:20px;
+  }
+
+  .timer{
+    font-size:26px;
+  }
+
+}
+```
